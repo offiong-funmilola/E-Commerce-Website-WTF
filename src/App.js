@@ -1,35 +1,36 @@
-import React from 'react'
+import Category from './Component/Product/Category';
+import SortMenu from './Component/Product/SortMenu';
+import ProductCard from './Component/Product/ProductCard';
+import {ProductsProvider} from './Component/Context/ProductsContext';
+
+
 
 function App() {
-  return (
-    <div>
-      <h1 className="text-5xl font-bold underline text-center">
-        HELLO TEAM FRONTEND!
-      </h1>
+ 
+  // const card = products.map(product => {
+  //   return (
+  //     <ProductCard 
+  //     key={product.id} 
+  //     image={product.thumbnail} 
+  //     title={product.title} 
+  //     price={product.price}
+  //     />
+  //   ) 
+  // });
 
-      <div className="dropdown">
-        <label tabIndex={0} className="btn m-1">
-          Things installed
-        </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          <li>
-            <a href="/">TAILWIND</a>
-          </li>
-          <li>
-            <a href="/">DAISY UI</a>
-          </li>
-          <li>
-            <a href="/">REACT ICON</a>
-          </li>
-          <li>
-            <a href="/">REACT ROUTER</a>
-          </li>
-        </ul>
+  return (
+    <ProductsProvider>
+      <div>
+        <h1 className="text-5xl font-bold underline text-center">
+          HELLO TEAM FRONTEND!
+        </h1>
+        <SortMenu />
+        <div className='flex justify-between'>
+        <Category /> 
+        <ProductCard />
+        </div>  
       </div>
-    </div>
+    </ProductsProvider>
   );
 }
 
