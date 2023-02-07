@@ -23,13 +23,20 @@ export const ProductsProvider = ({children}) => {
         .then((categories)=> setName(categories));
     }
 
-    useEffect(()=> {(item) => {
-        products.filter((item) => selection.length > 0 && selection.includes(item.category))
-            setProducts(item)  
-    }}, [])
-
+    const selectionHandler = (e) => {
+        const { name, checked } = e.target;
+        if (checked) {
+            let currentSelection = [...selection]
+            currentSelection.push(name)
+            setSelection(currentSelection)
+        } else {
+            let currentSelection = selection.filter(i => i !== name);
+            setSelection(currentSelection);
+        }
+    }
+   
 return (
-        <ProductsContext.Provider value={{products, name, selection, setSelection}}>
+        <ProductsContext.Provider value={{products, name, selection, selectionHandler}}>
         {children}
         </ProductsContext.Provider>
     )

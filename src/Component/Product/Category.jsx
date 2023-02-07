@@ -7,20 +7,19 @@ function Category() {
     const [range, setRange] = useState([]);
 
 
-    const {name, selection, setSelection} = useContext(ProductsContext);
-
-    const selectionHandler = (e) => {
-        // Destructuring
-        const { name, checked } = e.target;
-        if (checked) {
-            let currentSelection = [...selection]
-            currentSelection.push(name)
-            setSelection(currentSelection)
-        } else {
-            let currentSelection = selection.filter(i => i !== name);
-            setSelection(currentSelection);
-        }
-    }
+    const {name, selection, selectionHandler} = useContext(ProductsContext);
+        const { checked } = selectionHandler;
+    // const selectionHandler = (e) => {
+    //     const { name, checked } = e.target;
+    //     if (checked) {
+    //         let currentSelection = [...selection]
+    //         currentSelection.push(name)
+    //         setSelection(currentSelection)
+    //     } else {
+    //         let currentSelection = selection.filter(i => i !== name);
+    //         setSelection(currentSelection);
+    //     }
+    // }
           
     const rangeHandler = (e) => {
         const { name, checked } = e.target;
@@ -35,8 +34,7 @@ function Category() {
 
     }
     
-    //console.log({selection});
-    // console.log({range});
+    console.log({selection});
 
   return (
     <div className='w-[250px] h-[1081px] px-8 mt-4 hidden md:block'>
@@ -45,7 +43,7 @@ function Category() {
             {name.map((category, index) => (
                 <div className='mb-3' key={index}> 
                     <label htmlFor={category}>
-                        <input type='checkbox' name={category} className='mr-3'  onChange={selectionHandler} />
+                        <input type='checkbox' name={category} className='mr-3'  checked={checked} onChange={selectionHandler} />
                         {category}
                     </label> 
                 </div>

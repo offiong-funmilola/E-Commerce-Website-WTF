@@ -6,17 +6,6 @@ import {ProductsProvider} from './Component/Context/ProductsContext';
 
 
 function App() {
- 
-  // const card = products.map(product => {
-  //   return (
-  //     <ProductCard 
-  //     key={product.id} 
-  //     image={product.thumbnail} 
-  //     title={product.title} 
-  //     price={product.price}
-  //     />
-  //   ) 
-  // });
 
   return (
     <ProductsProvider>
@@ -24,11 +13,13 @@ function App() {
         <h1 className="text-5xl font-bold underline text-center">
           HELLO TEAM FRONTEND!
         </h1>
-        <SortMenu />
-        <div className='flex justify-between'>
-        <Category /> 
-        <ProductCard />
-        </div>  
+        <div className='w-full h-screen'>
+          <SortMenu />
+          <div className='flex justify-between'>
+          <Category /> 
+          <ProductCard />
+          </div> 
+        </div> 
       </div>
     </ProductsProvider>
   );
